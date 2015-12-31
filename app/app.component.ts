@@ -1,27 +1,21 @@
 import {Component} from 'angular2/core'
 import {Hero} from './IHero'
 import {HEROES} from './fixtures/heros'
+import {HeroDetail} from './hero-detail.component'
 
 @Component({
   selector: 'my-app'
 , template: `
     <h1>{{title}}</h1>
-    <ul class="heros">
+    <ul class="heroes">
       <li *ngFor="#hero of heros"
           [class.selected]="hero === selectedHero"
           (click)="selectHero(hero)">
         <span class="badge">{{hero.id}}</span> {{hero.name}}
       </li>
     </ul>
-    <div *ngIf="selectedHero">
-      <h2>{{selectedHero.name}} details!</h2>
-      <div><label>id: </label>{{selectedHero.id}}</div>
-      <div>
-      <label>name: </label>
-      <div><input [(ngModel)]="selectedHero.name" placeholder="name"></div>
-      </div>
-    </div>
-    `
+    <hero-detail [hero]="selectedHero"></hero-detail>`
+, directives: [HeroDetail]
 , styles:[`
     .selected {
       background-color: #CFD8DC !important;
