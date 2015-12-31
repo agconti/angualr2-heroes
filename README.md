@@ -1,2 +1,2 @@
-# angular2-quickstart
-The hello world starter project from angular.io's quickstart
+# angular2-heros
+The hero editor tutorial from [angular.io](angular.io).
