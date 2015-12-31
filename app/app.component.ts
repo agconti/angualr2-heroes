@@ -1,4 +1,5 @@
 import {Component} from 'angular2/core'
+import {Hero} from './IHero'
 import {HEROES} from './fixtures/heros'
 
 @Component({
