@@ -7,7 +7,7 @@ import {HEROES} from './fixtures/heros'
 export class HeroService {
   getHeroes() {
     return new Promise<Hero[]>(resolve => {
-      setTimeout(() => resolve(HEROES), 1000)
+      setTimeout(() => resolve(HEROES), 350)
     })
   }
 }
