@@ -5,7 +5,7 @@ import {HeroService} from './hero.service'
 
 
 @Component({
-  selector: 'my-app'
+  selector: 'hero-list'
 , template: `
     <h1>{{title}}</h1>
     <ul class="heroes">
