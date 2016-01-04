@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core'
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router'
-import {CrisisListComponent} from './crisis-list.component'
-import {HeroListComponent} from './hero-list.component'
+import {CrisisListComponent} from './crises/crisis-list.component'
+import {HeroListComponent} from './heroes/hero-list.component'
 
 
 @Component({
