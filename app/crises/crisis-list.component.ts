@@ -11,11 +11,14 @@ import {CrisisService} from './crisis.service'
 , template: `
     <h2>Today's Top Crises</h2>
     <ul class="crises">
-      <li *ngFor="#crisis of crises">
+      <li *ngFor="#crisis of crises"
+          (click)=selectCrisis(crisis)>
         <span class="badge">{{crisis.id}}</span> {{crisis.description}}
       </li>
     </ul>
-    <crisis-detail></crisis-detail>
+    <div *ngIf="selectedCrisis">
+      <crisis-detail [crisis]="selectedCrisis"></crisis-detail>
+    </div>
   `
 , styles:[`
     .selected {
@@ -68,6 +71,7 @@ import {CrisisService} from './crisis.service'
 })
 export class CrisisListComponent implements OnInit {
   public crises: Crisis[]
+  public selectedCrisis: Crisis
 
   constructor(private _crisisService: CrisisService) {}
 
@@ -77,5 +81,9 @@ export class CrisisListComponent implements OnInit {
 
   getCrises() {
     this._crisisService.getCrises().then(crises => this.crises = crises)
+  }
+
+  selectCrisis(crisis: Crisis){
+    this.selectedCrisis = crisis
   }
 }
