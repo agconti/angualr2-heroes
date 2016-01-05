@@ -12,13 +12,12 @@ import {CrisisService} from './crisis.service'
     <h2>Today's Top Crises</h2>
     <ul class="crises">
       <li *ngFor="#crisis of crises"
+          [class.selected]="crisis === selectedCrisis"
           (click)=selectCrisis(crisis)>
         <span class="badge">{{crisis.id}}</span> {{crisis.description}}
       </li>
     </ul>
-    <div *ngIf="selectedCrisis">
-      <crisis-detail [crisis]="selectedCrisis"></crisis-detail>
-    </div>
+    <crisis-detail [crisis]="selectedCrisis"></crisis-detail>
   `
 , styles:[`
     .selected {
