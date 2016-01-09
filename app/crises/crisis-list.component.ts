@@ -1,4 +1,5 @@
 import {Component, OnInit} from 'angular2/core'
+import {Router} from 'angular2/router'
 import {Crisis} from './ICrisis'
 import {CrisisDetailComponent} from './crisis-detail.component'
 import {CrisisService} from './crisis.service'
@@ -72,7 +73,8 @@ export class CrisisListComponent implements OnInit {
   public crises: Crisis[]
   public selectedCrisis: Crisis
 
-  constructor(private _crisisService: CrisisService) {}
+  constructor( private _crisisService: CrisisService
+             , private _router: Router ) {}
 
   ngOnInit() {
     this.getCrises()
@@ -84,5 +86,6 @@ export class CrisisListComponent implements OnInit {
 
   selectCrisis(crisis: Crisis){
     this.selectedCrisis = crisis
+    this._router.navigate(['CrisisDetail', { id: crisis.id }])
   }
 }
