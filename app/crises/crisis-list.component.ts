@@ -1,8 +1,9 @@
 import {Component, OnInit} from 'angular2/core'
 import {Router} from 'angular2/router'
+
 import {Crisis} from './ICrisis'
-import {CrisisDetailComponent} from './crisis-detail.component'
 import {CrisisService} from './crisis.service'
+import {CrisisDetailComponent} from './crisis-detail.component'
 
 
 @Component({
@@ -18,7 +19,6 @@ import {CrisisService} from './crisis.service'
         <span class="badge">{{crisis.id}}</span> {{crisis.description}}
       </li>
     </ul>
-    <crisis-detail [crisis]="selectedCrisis"></crisis-detail>
   `
 , styles:[`
     .selected {

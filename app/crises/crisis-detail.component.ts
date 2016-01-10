@@ -9,15 +9,17 @@ import {Crisis} from './ICrisis'
 , inputs: ['crisis']
 , directives: [ROUTER_DIRECTIVES]
 , template: `
-    <div *ngIf='crisis'>
-      <h2>Current Crisis!</h2>
-      <div><label>id: </label>{{crisis.id}}</div>
-      <div>
-        <label>Description: </label>
-        <div><input [(ngModel)]="crisis.description" placeholder="description"></div>
-      </div>
-      <a [routerLink]="['CrisisCenter']">Back</a>
-    </div>`
+  <div *ngIf="crisis">
+  <h2>Current Crisis!</h2>
+  <div><label>id: </label>{{crisis.id}}</div>
+  <div>
+    <label>Description: </label>
+    <div><input [(ngModel)]="crisis.description" placeholder="description"></div>
+  </div>
+  <a [routerLink]="['CrisisList']">Back</a>
+  </div>
+
+      `
 })
 export class CrisisDetailComponent implements OnInit{
   crisis: Crisis
