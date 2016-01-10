@@ -1,4 +1,6 @@
 import {Component, OnInit} from 'angular2/core'
+import {Router} from 'angular2/router'
+
 import {Hero} from './IHero'
 import {HeroDetail} from './hero-detail.component'
 import {HeroService} from './hero.service'
@@ -7,17 +9,14 @@ import {HeroService} from './hero.service'
 @Component({
   selector: 'hero-list'
 , template: `
-    <h1>{{title}}</h1>
     <ul class="heroes">
       <li *ngFor="#hero of heroes"
           [class.selected]="hero === selectedHero"
           (click)="selectHero(hero)">
         <span class="badge">{{hero.id}}</span> {{hero.name}}
       </li>
-    </ul>
-    <hero-detail [hero]="selectedHero"></hero-detail>`
+    </ul>`
 , directives: [HeroDetail]
-, providers: [HeroService]
 , styles:[`
     .selected {
       background-color: #CFD8DC !important;
@@ -68,11 +67,11 @@ import {HeroService} from './hero.service'
   `]
 })
 export class HeroListComponent implements OnInit {
-  public title: string = 'Tour of Heros'
   public heroes: Hero[];
   public selectedHero: Hero;
 
-  constructor(private _heroService: HeroService) { }
+  constructor( private _heroService: HeroService
+             , private _router: Router) { }
 
   ngOnInit() {
     this.getHeroes()
@@ -84,5 +83,6 @@ export class HeroListComponent implements OnInit {
 
   selectHero(hero: Hero) {
     this.selectedHero = hero
+    this._router.navigate(['HeroDetail', { id: hero.id }])
   }
 }
